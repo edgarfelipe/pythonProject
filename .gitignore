@@ -1,0 +1,15 @@
+# pasta de arquivos temporarios
+/temp/
+# arquivos de configuração
+config.ini
+config.py
+# arquivos de banco de dados
+*.db
+# arquivos de virtualenv
+env/
+#
+.history
+
+.vscode
+
+/venv

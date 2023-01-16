@@ -1,0 +1,125 @@
+{% load static %}
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cadastro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'usuarios/css/cadastro.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <script>
+        setTimeout(function () {
+            document.getElementById("alerta-mensagem").style.display = "none";
+        }, 3000); // Tempo de espera em milisegundos (3000 = 3 segundos)
+    </script>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">PetMatch</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Procurar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Cadastro</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Sobre</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contato</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h2 class="text-center my-4">Cadastre seu pet</h2>
+                <hr>
+                <form action="{% url 'novo_pet' %}" method="POST" enctype='multipart/form-data'>{%csrf_token %}
+                    <div id="mensagens-erro-sucesso">
+                        {% if messages %}
+                        {% for message in messages %}
+                        {% if message.tags == 'error' %}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert" id="alerta-mensagem">
+                            {{ message }}
+                        </div>
+                        {% endif %}
+                        {% if message.tags == 'success' %}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert" id="alerta-mensagem">
+                            {{ message }}
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                        <input type="file" name="foto" class="form-control">
+                        <br>
+                        <span>Nome:<span>
+                                <input type="text" class="form-control" name="nome"
+                                    placeholder="Digite o nome do pet...">
+                                <br>
+                                <span>Descrição:<span>
+                                        <textarea class="form-control" name="descricao"
+                                            placeholder="Descrição..."></textarea>
+                                        <br>
+
+                                        <div class="row">
+                                            <div class="col-md">
+                                                <span>Estado:</span>
+                                                <input type="text" placeholder="Digite o estado do pet..." name="estado"
+                                                    class="form-control">
+                                            </div>
+
+                                            <div class="col-md">
+                                                <span>Cidade:</span>
+                                                <input type="text" placeholder="Digite a cidade do pet..." name="cidade"
+                                                    class="form-control">
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <span>Telefone para contato:</span>
+                                        <input type="text" placeholder="Digite o seu telefone..." name="telefone"
+                                            class="form-control">
+                                        <br>
+                                        <span>Tags:</span>
+                                        {% for tag in tags%}
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="{{tag.id}}"
+                                                id="{{tag.id}}">
+                                            <label class="form-check-label" for="{{tag.id}}">{{tag}}</label>
+                                        </div>
+                                        {% endfor %}
+                                        <br>
+                                    </span>Raça:</span>
+
+                                <select name="raca" class="form-select">
+                                    {% for raca in racas%}
+                                    <option value="{{raca.id}}">{{raca}}</option>
+                                    {% endfor %}
+                                </select>
+                                <br>
+                                <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="form-group text-center mt-5"></div>
+</body>
+<footer class=" text-center">
+    <div class="container">
+        <p>Copyright &copy; PetMatch</p>
+    </div>
+</footer>
+
+</html>
