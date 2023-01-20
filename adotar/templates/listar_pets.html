@@ -44,16 +44,7 @@
     <br>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-6 col-lg-4 d-flex align-items-center">
-                {% if messages %}
-                <br>
-                {% for message in messages %}
-                <div class="alert {{message.tags}}">
-                    {{message}}
-                </div>
-                {% endfor %}
-                {% endif %}
-                <hr>
+            <div class="col-md-6 col-lg-4 d-flex">
                 <form action="{%url 'listar_pets'%}" method="GET">
                     <div class="form-group">
                         <input type="text" placeholder="Cidade..." value="{%if cidade %}{{cidade}}{%endif%}"
@@ -90,6 +81,12 @@
             </div>
         </div>
     </div>
+    <br>
+    <footer class=" text-center">
+        <div class="container">
+            <p>Copyright &copy; PetMatch</p>
+        </div>
+    </footer>
 </body>
 
 </html>

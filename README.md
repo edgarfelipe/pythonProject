@@ -16,10 +16,6 @@ Adição de uma opção de contato para que os usuários possam entrar em contat
 Adição de uma seção de FAQ para responder perguntas comuns sobre o processo de adoção.
 Este projeto é um trabalho em andamento, e qualquer contribuição é bem-vinda. Se você tiver alguma sugestão ou encontrar algum problema, por favor, abra uma issue no GitHub.
 
-Projeto PetMatch
-
-O PetMatch é uma plataforma para divulgação de animais perdidos ou disponíveis para adoção. Com ele, é possível encontrar o animal perfeito para você ou ajudar a encontrar um lar para animais abandonados.
-
 Instalação
 
 Para instalar o projeto, siga os seguintes passos:
@@ -31,21 +27,10 @@ Rode as migrações: python manage.py migrate
 Inicie o servidor: python manage.py runserver
 Uso
 
-Ao acessar a página inicial, apos fazer o cadastro é possível ver uma lista com todos os animais disponíveis para adoção. É possível filtrar essa lista por espécie, raça, sexo e localização.
+Ao acessar a página inicial, apos fazer o cadastro é possível ver uma lista com todos os animais disponíveis para adoção. É possível filtrar essa lista por  raça e localização.
 
 Também é possível cadastrar um animal perdido ou disponível para adoção. Para isso, basta acessar o menu "Quero divulgar" e preencher o formulário.
 
 Além disso, é possível ver os animais que você já divulgou e excluí-los caso necessário.
-
-Contribuição
-
-Contribuições são sempre bem-vindas! Caso queira contribuir com o projeto, siga os seguintes passos:
-
-Faça um fork do projeto
-Crie uma branch para sua feature: git checkout -b minha-feature
-Faça as modificações e comite: git commit -am 'Adicionando minha feature'
-Faça um push para a branch: git push origin minha-feature
-Faça um pull request
-Licença
 
 Este projeto está licenciado sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
