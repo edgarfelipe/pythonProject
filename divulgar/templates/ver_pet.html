@@ -15,14 +15,35 @@
 
 <body>
 
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-2 bg-side-plataforma sidebar">
-        <h2>ADO.TE</h2>
-        <hr>
-
-
-      </div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">PetMatch</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'listar_pets'%}">Inicio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'novo_pet' %}">Novo pet</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'seus_pets' %}">Meus pets</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'listar_pets'%}">Adotar</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'ver_pedido_adocao'%}">Pedidos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'sair' %}">Sair</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
       <div style="padding:60px" class="col-md">
         <h3 class="font-vinho">Informações do pet</h3>

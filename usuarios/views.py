@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.db import IntegrityError
+from django.contrib.auth.decorators import login_required
 
 
 def cadastro(request):
@@ -65,6 +66,7 @@ def logar(request):
             return render(request, 'login.html')
 
 
+@login_required
 def sair(request):
     logout(request)
     return redirect('/auth/login')

@@ -3,6 +3,7 @@ from divulgar.models import Pet, Raca
 from django.contrib import messages
 from datetime import datetime
 from .models import PedidoAdocao
+from django.core.mail import send_mail
 
 
 def listar_pets(request):
@@ -36,13 +37,33 @@ def pedido_adocao(request, id_pet):
 
     pedido.save()
 
-    messages.sucess(
+    messages.success(
         request, 'Pedido de adoção realizado, você receberá um e-mail caso ele seja aprovado.')
     return redirect('/adotar')
 
 
-def ver_pedido_adocao(request):
-    if request.method == "GET":
-        pedidos = PedidoAdocao.objects.filter(
-            usuario=request.user).filter(status="AG")
-        return render(request, 'ver_pedido_adocao.html', {'pedidos': pedidos})
+def processa_pedido_adocao(request, id_pedido):
+    status = request.GET.get('status')
+    pedido = PedidoAdocao.objects.get(id=id_pedido)
+    if status == "A":
+        pedido.status = 'AP'
+        string = '''Olá, sua adoção foi aprovada. ...'''
+    elif status == "R":
+        string = '''Olá, sua adoção foi recusada. ...'''
+        pedido.status = 'R'
+
+    pedido.save()
+
+
+# alterar status do pet
+
+    print(pedido.usuario.email)
+    email = send_mail(
+        'Sua adoção foi processada',
+        string,
+        'felipejokerbr@gmail.com',
+        [pedido.usuario.email,],
+    )
+
+    messages.success(request, 'Pedido de adoção processado com sucesso')
+    return redirect('/divulgar/ver_pedido_adocao')
