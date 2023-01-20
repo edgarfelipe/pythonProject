@@ -1,9 +1,3 @@
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/2p7yVKIIXy0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-
-
-
 Este projeto é uma plataforma de adoção de animais. Ele permite que os usuários cadastrem seus animais para adoção, bem como visualizem animais disponíveis para adoção.
 
 O projeto é construído usando o framework Django para o back-end e Bootstrap para o front-end. Ele segue as melhores práticas de desenvolvimento web, incluindo validação de formulários, upload de imagens e gerenciamento de sessão de usuário.
